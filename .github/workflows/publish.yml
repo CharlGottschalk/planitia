@@ -1,0 +1,28 @@
+# Publishes to npm when a v* tag is pushed, via npm trusted publishing (OIDC): no token or 2FA
+# prompt. The package's trusted publisher on npmjs.com must name this repo and this file.
+name: Publish to npm
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    # Only the public repo is linked on npm; anywhere else a tag must not try to publish.
+    if: github.repository == 'CharlGottschalk/planitia'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Tag must match package.json version
+        run: test "$GITHUB_REF_NAME" = "v$(node -p 'require("./package.json").version')"
+      - run: npm ci
+      # prepublishOnly runs the tests; provenance is added automatically.
+      - run: npm publish
