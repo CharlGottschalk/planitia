@@ -4,7 +4,7 @@ Follow these steps exactly to create and manage MCP servers with Planitia. Plani
 TypeScript MCP servers (stdio transport) from templates. The guide is printed by `planitia guide`
 and always matches the installed version.
 
-In this guide `planitia` means the installed command, or `npx -y github:CharlGottschalk/planitia`
+In this guide `planitia` means the installed command, or `npx -y planitia`
 when it isn't installed. Always pass `--json` where a command accepts it, and parse stdout as JSON.
 Logs and warnings go to stderr. A command that fails exits 1 and changes nothing.
 

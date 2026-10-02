@@ -5,7 +5,7 @@ business-logic templates. Input validation, guardrails, a smoke test and a READM
 every generated server, so you only fill in what is specific to your domain.
 
 ```sh
-npx github:CharlGottschalk/planitia new --template database-query --name orders-db
+npx planitia new --template database-query --name orders-db
 ```
 
 Each generated server:
@@ -23,20 +23,18 @@ Each generated server:
 ## Requirements
 
 - Node.js 20 or newer (22.18+ to use `.ts` spec files)
-- Git, which `npx github:…` uses to fetch the CLI.
+- Git, only to use `github:` template sources or to run unreleased changes.
 
 ## Install and run
 
-The CLI runs straight from the git repository. No npm publish is needed. npm runs the `prepare`
-script on install, which builds `dist/`.
+Planitia is published to npm:
 
 ```sh
-npx github:CharlGottschalk/planitia new --help
+npx planitia new --help        # or: npm install -g planitia
 ```
 
-Each `npx github:…` run checks the repository and uses its latest commit, so new templates arrive
-without an update step. To pin a version, add a tag (once one exists), for example
-`npx github:CharlGottschalk/planitia#v0.1.0 new …`.
+`npx planitia@0.1.0 new …` pins a version. To run the latest unreleased commit instead, use
+`npx github:CharlGottschalk/planitia new …`; npm runs the `prepare` script, which builds `dist/`.
 
 For local development:
 
@@ -112,8 +110,8 @@ To let Claude Code and Codex find Planitia on their own, install its skill. The 
 `SKILL.md` that tells the agent to run `planitia guide`:
 
 ```sh
-npx github:CharlGottschalk/planitia skill install            # Claude Code and Codex, for your user
-npx github:CharlGottschalk/planitia skill install --project  # under the current directory instead
+npx planitia skill install            # Claude Code and Codex, for your user
+npx planitia skill install --project  # under the current directory instead
 ```
 
 `--claude` or `--codex` limits it to one agent. It writes `SKILL.md` to
@@ -319,9 +317,9 @@ add-tool` and `list-tools` read it, so they don't need the template again.
 
 ```sh
 cd orders-db
-npx github:CharlGottschalk/planitia add-tool --kind sql --name get_order --description "One order" \
+npx planitia add-tool --kind sql --name get_order --description "One order" \
   --readOnly true --param id:integer --sql "SELECT * FROM public.orders WHERE id = $1"
-npx github:CharlGottschalk/planitia add-tool --kind custom --name refund --description "Refund an order" \
+npx planitia add-tool --kind custom --name refund --description "Refund an order" \
   --readOnly false --param id:integer --param reason?:string
 npm run build
 ```
