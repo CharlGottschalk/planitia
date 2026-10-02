@@ -11,7 +11,7 @@ Before doing anything else, run:
 planitia guide
 ```
 
-If `planitia` isn't installed, use `npx -y github:CharlGottschalk/planitia guide`.
+If `planitia` isn't installed, use `npx -y planitia guide`.
 
 Follow the printed guide exactly. It matches the installed version of Planitia, so it overrides
 anything you remember about Planitia's commands. Never ask for, pass or write secret values: show
