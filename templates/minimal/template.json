@@ -1,0 +1,6 @@
+{
+  "description": "A starting point for your own template: one input and one example tool.",
+  "inputs": [
+    { "id": "greeting", "prompt": "Greeting the example tool uses", "default": "Hello", "pattern": "[A-Za-z ,!]{1,40}", "help": "Text the greet tool puts before the name. An example input: replace it with your own." }
+  ]
+}

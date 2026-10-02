@@ -1,0 +1,7 @@
+{
+  "description": "Stub template for exercising the generator in tests.",
+  "inputs": [
+    { "id": "greeting", "prompt": "Greeting text", "default": "Hello" },
+    { "id": "connection", "prompt": "Connection string", "secret": true, "env": "HELLO_CONNECTION" }
+  ]
+}

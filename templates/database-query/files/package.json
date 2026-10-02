@@ -1,0 +1,27 @@
+{
+  "name": {{name|json}},
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    {{name|json}}: "dist/src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/src/index.js",
+    "test": "tsc && node --test dist/test/smoke.test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "pg": "^8.23.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.23.0",
+    "typescript": "^7.0.2"
+  }
+}

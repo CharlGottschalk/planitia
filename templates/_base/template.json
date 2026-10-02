@@ -1,0 +1,8 @@
+{
+  "description": "Server skeleton layered under every template.",
+  "inputs": [
+    { "id": "timeoutMs", "prompt": "Per-call timeout in ms", "default": "10000", "pattern": "[1-9][0-9]{0,6}", "help": "Each tool call fails with TIMEOUT after this many milliseconds. TOOL_TIMEOUT_MS overrides it at runtime." },
+    { "id": "rateLimitPerMinute", "prompt": "Max tool calls per minute (0 = off)", "default": "0", "pattern": "0|[1-9][0-9]{0,5}", "help": "Maximum tool calls per minute across all tools; 0 turns the limit off. RATE_LIMIT_PER_MINUTE overrides it at runtime." },
+    { "id": "cacheTtlSeconds", "prompt": "Cache read-only results for N seconds (0 = off)", "default": "0", "pattern": "0|[1-9][0-9]{0,5}", "help": "Results of read-only tools are cached in memory for this many seconds; 0 turns caching off. CACHE_TTL_SECONDS overrides it at runtime." }
+  ]
+}

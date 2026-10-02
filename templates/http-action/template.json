@@ -1,0 +1,13 @@
+{
+  "description": "POST JSON to allowlisted HTTP endpoints (webhooks, APIs), with the auth token read from an env var.",
+  "toolKinds": ["http", "custom"],
+  "builtinTools": ["http_post", "http_get"],
+  "genericTool": "http_post",
+  "inputs": [
+    { "id": "allowedHosts", "prompt": "Hosts the tool may POST to, comma-separated", "default": "api.example.com", "pattern": "[a-z0-9]([a-z0-9.-]*[a-z0-9])?(,[a-z0-9]([a-z0-9.-]*[a-z0-9])?)*", "help": "Comma-separated hostnames the tools may call, e.g. hooks.example.com. Requests to any other host are refused before anything is sent." },
+    { "id": "authHeader", "prompt": "Auth header name", "default": "Authorization", "pattern": "[A-Za-z0-9-]+", "help": "Header that carries the token, e.g. Authorization or X-Api-Key." },
+    { "id": "authScheme", "prompt": "Auth scheme before the token (empty = token only)", "default": "Bearer", "pattern": "[A-Za-z0-9-]*", "help": "Text before the token in the header, e.g. Bearer. Leave empty to send the token alone." },
+    { "id": "genericTools", "prompt": "Expose the generic http_post tool (on or off)", "default": "on", "choices": ["on", "off"], "help": "off leaves out the free-form http_post tool, so the model only gets http_get and spec-defined tools." },
+    { "id": "token", "prompt": "Auth token", "secret": true, "env": "HTTP_ACTION_TOKEN", "help": "Never collected or written to disk. Set HTTP_ACTION_TOKEN in the MCP client entry." }
+  ]
+}

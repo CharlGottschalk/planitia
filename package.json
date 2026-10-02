@@ -1,0 +1,35 @@
+{
+  "name": "planitia",
+  "version": "0.1.0",
+  "description": "Generate ready-to-run MCP servers from business-logic templates",
+  "license": "MIT AND MIT-0",
+  "author": "The Planitia authors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlGottschalk/planitia.git"
+  },
+  "private": true,
+  "type": "module",
+  "bin": {
+    "planitia": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "skills",
+    "AGENT_GUIDE.md",
+    "LICENSE-TEMPLATES"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "test": "tsc && node --test \"test/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
+  }
+}

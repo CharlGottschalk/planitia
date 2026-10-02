@@ -1,0 +1,4 @@
+{
+  "description": "Validate payloads against a zod schema you edit, or a JSON Schema sent with each call.",
+  "inputs": []
+}

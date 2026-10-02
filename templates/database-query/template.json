@@ -1,0 +1,12 @@
+{
+  "description": "Run parameterized SQL against Postgres: read-only by default, with an optional table allowlist.",
+  "toolKinds": ["sql", "custom"],
+  "builtinTools": ["query", "list_tables", "describe_table"],
+  "genericTool": "query",
+  "inputs": [
+    { "id": "mode", "prompt": "Access mode (read-only or read-write)", "default": "read-only", "choices": ["read-only", "read-write"], "help": "read-only runs every query in a READ ONLY transaction that Postgres enforces. read-write commits, and marks the generic query tool destructive." },
+    { "id": "tables", "prompt": "Tables the tool may use, comma-separated schema.table (empty = no allowlist)", "default": "", "pattern": "([a-z_][a-z0-9_$]*\\.[a-z_][a-z0-9_$]*(,[a-z_][a-z0-9_$]*\\.[a-z_][a-z0-9_$]*)*)?", "help": "Optional allowlist of schema.table names (lowercase), e.g. public.orders,public.customers. Queries touching other tables are refused. Empty means no allowlist." },
+    { "id": "genericTools", "prompt": "Expose the generic query tool (on or off)", "default": "on", "choices": ["on", "off"], "help": "off leaves out the free-form query tool, so the model only gets list_tables, describe_table and spec-defined tools. Recommended once spec-defined tools cover what is needed." },
+    { "id": "connection", "prompt": "Postgres connection string", "secret": true, "env": "DATABASE_URL", "help": "Never collected or written to disk. Set DATABASE_URL in the MCP client entry, ideally for a least-privilege role." }
+  ]
+}
